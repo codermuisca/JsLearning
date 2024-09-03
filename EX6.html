@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EX 6 JS</title>
+</head>
+<body onload="comenzarTemporizador()">
+    <input type="number" id="tiempoElegido">
+    <button onclick="temporizador()">Alarma</button>
+    <h1 id="textoAlarma">00:00:00</h1>
+    
+    <Audio id="audioAlarma">
+        <source src="Audio/Buenos Días Campesino - Jorge Velosa.mp3" type="audio/mpeg">
+        <!--Mensaje si el navegador no puede reproducir el audio-->
+        Sonido no habilitado
+
+    </Audio>
+
+    <script>
+        let tiempo = document.getElementById("tiempoElegido");
+        let mensajeAlarma = document.getElementById("textoAlarma");
+        let elementoAudio = document.getElementById("audioAlarma");
+
+        //Funcion para definir un temporizador, rango de tiempo que cumplido va a invocar otra función
+        
+        function temporizador(){
+
+            setTimeout(tiempoCumplido, 1000 * tiempo.value);
+        }
+
+        //Función para definir que acción hacer
+        
+
+        function tiempoCumplido(){
+            mensajeAlarma.style.color = "green";
+            elementoAudio.play();
+            
+
+        }
+        //Función para que comience el reloj
+
+        function comenzarTemporizador(){
+            setInterval(runTime,1000);
+        }
+
+        function runTime(){
+            let tiempoActual = new Date();
+            let hora = String(tiempoActual.getHours()).padStart(2,"0");
+            let minutos = String(tiempoActual.getMinutes()).padStart(2,"0");
+            let segundos = String(tiempoActual.getSeconds()).padStart(2,"0");
+            //.padStart ayuda a que se muestren 2 dígitos, haciendo que cuando sea solo una unidad agregue 0 
+
+            let textoHora = hora +":"+ minutos +":"+segundos;
+
+            mensajeAlarma.textContent = textoHora;
+
+        }
+
+    </script>   
+</body>
+</html>

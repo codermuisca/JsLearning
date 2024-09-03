@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EX 4 JS</title>
+</head>
+<body>
+    <p>Selecciona los segundos a esperar</p>
+    <input type="number" id="tiempoElegido">
+    <button onclick="temporizador()">Alarma</button>
+    <p id="mensaje"></p>
+
+    <script>
+        let tiempo = document.getElementById("tiempoElegido");
+        let mensajeAlarma = document.getElementById("mensaje");
+
+        //Funcion para definir un temporizador, rango de tiempo que cumplido va a invocar otra función
+        
+        function temporizador(){
+
+            setTimeout(tiempoCumplido, 1000 * tiempo.value);
+        }
+
+        //Función para definir que acción hacer-->
+        
+
+        function tiempoCumplido(){
+            mensajeAlarma.textContent = "Listo!";
+            mensajeAlarma.style.color = "red";
+            //alert("Se acabó el tiempo");
+
+        }
+
+        /*otra forma de setear una función que muestre un alert transcurrido determinado tiempo: 
+            setTimeout(function() { alert("Se acabo el tiempo") }, 5000); */
+
+
+    </script>
+
+</body>
+</html>
+

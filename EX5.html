@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EX 5 JS</title>
+</head>
+<body>
+    
+    <input type="number" id="tiempoElegido">
+    <button onclick="temporizador()">Alarma</button>
+    <h1 id="textoAlarma">Apagado</h1>
+    
+    <Audio id="audioAlarma">
+        <source src="Audio/Buenos Días Campesino - Jorge Velosa.mp3" type="audio/mpeg">
+        <!--Mensaje si el navegador no puede reproducir el audio-->
+        Sonido no habilitado
+
+    </Audio>
+
+    <script>
+        let tiempo = document.getElementById("tiempoElegido");
+        let mensajeAlarma = document.getElementById("textoAlarma");
+        let elementoAudio = document.getElementById("audioAlarma");
+
+        //Funcion para definir un temporizador, rango de tiempo que cumplido va a invocar otra función
+        
+        function temporizador(){
+
+            setTimeout(tiempoCumplido, 1000 * tiempo.value);
+        }
+
+        //Función para definir que acción hacer-->
+        
+
+        function tiempoCumplido(){
+            mensajeAlarma.textContent = "Listo!";
+            mensajeAlarma.style.color = "green";
+            elementoAudio.play();
+            
+
+        }
+
+        /*otra forma de setear una función que muestre un alert transcurrido determinado tiempo: 
+            setTimeout(function() { alert("Se acabo el tiempo") }, 5000); */
+
+
+    </script>   
+
+    
+</body>
+</html>

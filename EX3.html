@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EX 3 JS</title>
+</head>
+<body>
+    <h2 id="titulo">"No sé tú nombre"</h2>
+    <p>Ingresa tu nombre:</p>
+    <input type="text" id="nombreusuario">
+    <button onclick="mostrarnombre()">Confirmar</button>
+
+    <script>
+        function mostrarnombre(){
+            let nombre = document.getElementById("nombreusuario").value;
+            let titulo = document.getElementById("titulo");
+            let mensaje = "Tú te llamas " + nombre;
+            titulo.textContent = mensaje;
+            
+
+        }
+    </script>
+</body>
+</html>

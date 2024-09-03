@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica del día</title>
+</head>
+<body onload="ComenzarCuentaRegresiva()">
+    <h1>Responde este cuestionario en menos de <span id="cuentaRegresiva">30</span> segundos</h1>
+    <p>1. ¿Cuál es tú Nombre?</p>
+    <input type="text" id="res1">
+    <p>2. ¿Cuál es tu color favorito?</p>
+    <input type="text" id="res2">
+    <p>3. ¿En que ciudad Naciste?</p>
+    <input type="text" id="res3">
+    <p>4. ¿Cuál es tu comida favorita?</p>
+    <input type="text" id="res4">
+    <p>5. ¿De que color son tus ojos?</p>
+    <input type="text" id="res5">
+    <br><br>
+    <button onclick="finalizado()">Enviar</button>
+    <br><br>
+    <button onclick="volverAIntentar()">Volver a intentarlo</button>
+
+    <script>
+        let tiempoTerminado;
+        let intervaloDeTiempo;
+
+        function ComenzarCuentaRegresiva(){
+            tiempoTerminado = setTimeout(tiempoCumplido, 30000);
+            intervaloDeTiempo = setInterval(ticTac, 1000);
+            document.getElementById("cuentaRegresiva").textContent = 30;
+        }
+        
+        function ticTac() {
+            let tiempo = parseInt(document.getElementById("cuentaRegresiva").textContent);
+            if (tiempo > 0) {
+                document.getElementById("cuentaRegresiva").textContent = tiempo - 1;
+            }
+        }
+
+        function tiempoCumplido(){
+
+            clearInterval(intervaloDeTiempo);
+            document.getElementById("cuentaRegresiva").textContent = 0;
+            alert("Perdiste! se acabó el tiempo");
+            
+        }
+
+        function finalizado(){
+            clearTimeout(tiempoTerminado);
+            clearInterval(intervaloDeTiempo);
+
+            let fecha = new Date();
+            let respuesta1 = document.getElementById("res1").value;
+            let respuesta2 = document.getElementById("res2").value; 
+            let respuesta3 = document.getElementById("res3").value;
+            let respuesta4 = document.getElementById("res4").value;
+            let respuesta5 = document.getElementById("res5").value;
+
+            let mensaje = fecha.toLocaleDateString("es-Es") + "\n" + "1. " + respuesta1 + "\n"+ "2. " + respuesta2 + "\n" + "3. " + respuesta3 + "\n" + "4. " + respuesta4 + "\n" + "5. " + respuesta5;
+
+            alert(mensaje)
+
+        }
+
+        function volverAIntentar(){
+            location.reload();
+        }
+
+
+
+
+    </script>
+</body>
+</html>
